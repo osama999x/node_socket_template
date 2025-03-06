@@ -9,6 +9,7 @@ const version = process.env.VERSION;
 const sendResponse = require('./src/utils/sendResponse');
 const apiLogMiddleware = require('./src/middleware/apiLogMiddleWare');
 //Routes Imports
+const AppUserRouter = require('./src/resources/appUser/appUserRouter');
 //requiring db connection
 require('./src/config/database');
 
@@ -31,6 +32,7 @@ if (process.env.ENV !== 'dev') {
 }
 
 // Define routes
+app.use(`/api/${version}/appUser`, AppUserRouter);
 app.get('/', (req, res) => {
     res.send({ message: 'Rishta-Nagar-api Server...' });
 });
